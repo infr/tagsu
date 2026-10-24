@@ -59,7 +59,7 @@ function pcbGeometry() {
 function bezelGeometry() {
   const shape = roundedRect(new THREE.Shape(), -3.48, -1.03, 6.96, 2.06, 0.05);
   shape.holes.push(roundedRect(new THREE.Path(), -3.36, -0.92, 6.72, 1.84, 0.03));
-  return extrude(shape, 0.18, 0.015);
+  return extrude(shape, 0.08, 0.01);
 }
 
 /* ---------- Explode: every part flies from its place on the badge to a slot in a laid-out array ---------- */
@@ -317,6 +317,11 @@ export function BadgeModel({ picture, exploded, onLcdClick }: Props) {
             <boxGeometry args={[6.87, 2.75, 0.16]} />
             <meshStandardMaterial color="#1d3328" roughness={0.6} />
           </mesh>
+          {/* Pin header strip the module sits on, down to the main board */}
+          <mesh position={[X((HEADER[0] + HEADER[HEADER.length - 1]) / 2) - LCD.x, Y(365) - LCD.y, (Z.pcbTop - Z.modulePcb) / 2]} castShadow>
+            <boxGeometry args={[(HEADER[HEADER.length - 1] - HEADER[0]) / 100 + 0.2, 0.25, Z.modulePcb - Z.pcbTop]} />
+            <meshStandardMaterial {...blackProps} />
+          </mesh>
           {HEADER.map((x) => (
             <mesh key={x} position={[X(x) - LCD.x, Y(365) - LCD.y, 0.17]}>
               <boxGeometry args={[0.1, 0.14, 0.02]} />
@@ -328,7 +333,8 @@ export function BadgeModel({ picture, exploded, onLcdClick }: Props) {
             <boxGeometry args={[6.9, 2.0, 0.26]} />
             <meshPhysicalMaterial color="#e9eefc" emissive={lit ? "#8ea6ff" : "#1a2240"} emissiveIntensity={lit ? 0.55 : 0.2} roughness={0.25} clearcoat={0.6} />
           </mesh>
-          <mesh geometry={geo.bezel} position={[0, 0, 0.24]} castShadow>
+          {/* The metal frame is a rim over the glass, leaving the light guide's edges visible */}
+          <mesh geometry={geo.bezel} position={[0, 0, 0.34]} castShadow>
             <meshStandardMaterial {...metalProps} />
           </mesh>
           <mesh position={[-0.03, -0.02, 0.425]}>
