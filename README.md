@@ -1,6 +1,6 @@
 # Tagsu Editor
 
-Unofficial screen and logo editor for the Tagsu LCD name badge ([Rakettitiede](https://rakettitiede.com/), 2015), made because the original editor at tagsu.io is offline. Not affiliated with Rakettitiede.
+Unofficial screen and logo editor for the Tagsu LCD name badge ([Rakettitiede](https://rakettitiede.com/), 2015), made while the original editor at tagsu.io was offline. The original is now back at https://firebay.pelaaja.info/tagsu/. Not affiliated with Rakettitiede.
 
 Live at https://tagsu.vercel.app/. How it was made: [Giving AI eyes to reverse engineer hardware](https://kimsalmi.com/posts/2026/tagsu/).
 

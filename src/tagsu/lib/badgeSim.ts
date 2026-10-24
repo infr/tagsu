@@ -17,7 +17,8 @@ const SPEED = 2;
 const sleep = (n: number) => 16 << n;
 const SUBSTEP_MS = SPEED * sleep(0) + 3;
 const INVADER_STEP_MS = SPEED * (sleep(2) + sleep(1)) + 8;
-const BLINKS = 3;
+/** "Blinks" (EEPROM setting), at the firmware's default. */
+const BLINKS = 4;
 
 /** Custom characters 0-3 (top) and 4-7 (bottom) from a bitmap moved `shift` pixels right and rolled `roll` rows. */
 function spriteCgram(rows: number[], shift: number, roll: number): Cgram {
@@ -193,6 +194,7 @@ function effect(lcd: Lcd, code: number, buf: number[], isIn: boolean) {
 }
 
 function blink(lcd: Lcd) {
+  lcd.show(sleep(4));
   for (let k = 0; k < BLINKS; k++) {
     lcd.show(sleep(4), false);
     lcd.show(sleep(4), true);

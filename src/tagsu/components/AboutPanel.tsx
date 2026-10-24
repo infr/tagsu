@@ -10,7 +10,7 @@ const LINKS = [
   { href: "https://firebay.pelaaja.info/embedded/12kbps-simple-audio-data-transfer-for-avr/", label: "12kbps data transfer for AVR using audio", note: "the audio modem, by Jari Tulilahti" },
   { href: "https://github.com/Jartza/tagsu-avr-modem", label: "tagsu-avr-modem", note: "the badge's audio modem" },
   { href: "https://web.archive.org/web/20160531133748/http://labs.rakettitiede.com/tagsun-tarina/", label: "The story of Tagsu", note: "archived, in Finnish" },
-  { href: "https://web.archive.org/web/20160410054421/http://tagsu.io/edit/", label: "The original editor", note: "archived" },
+  { href: "https://firebay.pelaaja.info/tagsu/", label: "The original editor", note: "back online, by Jari Tulilahti" },
 ];
 
 /** What this editor is and where the badge came from. */
@@ -47,7 +47,7 @@ export function AboutPanel() {
         <div className={styles.panel} role="dialog" aria-label="About this editor">
           <h2 className={styles.title}>About</h2>
           <p>
-            Tagsu is an LCD name badge made by Rakettitiede in 2015. Its editor at tagsu.io is no longer online, so this is an unofficial
+            Tagsu is an LCD name badge made by Rakettitiede in 2015. Its editor at tagsu.io went offline, so this is an unofficial
             stand-in to keep badges working: it sends screens in the same audio format, worked out from the badge itself.
           </p>
           <p className={styles.note}>Not affiliated with Rakettitiede. No firmware is included.</p>
