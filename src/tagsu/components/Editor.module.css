@@ -24,6 +24,7 @@
 .meta {
   color: var(--fg-3);
   font-size: 12px;
+  white-space: nowrap;
 }
 
 .spacer {
@@ -149,7 +150,11 @@
 }
 
 @media (max-width: 520px) {
-  .bar kbd {
+  .bar {
+    gap: 8px;
+  }
+  .bar kbd,
+  .long {
     display: none;
   }
 }

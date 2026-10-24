@@ -24,14 +24,14 @@ function Glyph({ code }: { code: number }) {
   return <canvas ref={ref} width={5} height={8} aria-hidden="true" />;
 }
 
-function insert(el: HTMLInputElement, ch: string) {
-  const start = el.selectionStart ?? el.value.length;
-  const end = el.selectionEnd ?? start;
+function insert(el: HTMLInputElement, ch: string, atEnd: boolean) {
+  const start = atEnd ? el.value.length : el.selectionStart ?? el.value.length;
+  const end = atEnd ? start : el.selectionEnd ?? start;
   const next = el.value.slice(0, start) + ch + el.value.slice(end);
   if (el.maxLength > 0 && [...next].length > el.maxLength) return;
   Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!.set!.call(el, next);
   el.dispatchEvent(new Event("input", { bubbles: true }));
-  el.setSelectionRange(start + ch.length, start + ch.length);
+  if (!atEnd) el.setSelectionRange(start + ch.length, start + ch.length);
 }
 
 /** Inserts characters of the badge's ROM that a keyboard can't type into the LCD row last focused. */
@@ -67,15 +67,26 @@ export function CharPicker({ fallbackInputId }: { fallbackInputId: string }) {
     };
   }, [open]);
 
+  const pop = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!open || !pop.current || getComputedStyle(pop.current).position !== "fixed") return;
+    const row = (target.current?.isConnected ? target.current : document.getElementById(fallbackInputId))?.closest("li");
+    if (!row) return;
+    const covered = row.getBoundingClientRect().bottom - pop.current.getBoundingClientRect().top + 8;
+    if (covered > 0) window.scrollBy({ top: covered, behavior: "smooth" });
+  }, [open, fallbackInputId]);
+
   const pick = (code: number) => {
     let el = target.current;
     if (!el?.isConnected) el = document.getElementById(fallbackInputId) as HTMLInputElement | null;
     if (!el) return;
-    if (document.activeElement !== el) {
+    const focused = document.activeElement === el;
+    if (!focused && matchMedia("(pointer: coarse)").matches) return insert(el, ROM_CHARS[code], true);
+    if (!focused) {
       el.focus();
       el.setSelectionRange(el.value.length, el.value.length);
     }
-    insert(el, ROM_CHARS[code]);
+    insert(el, ROM_CHARS[code], false);
   };
 
   return (
@@ -92,7 +103,7 @@ export function CharPicker({ fallbackInputId }: { fallbackInputId: string }) {
         Ω
       </button>
       {open && (
-        <div className={styles.pop} role="group" aria-label="Special characters">
+        <div ref={pop} className={styles.pop} role="group" aria-label="Special characters">
           {CODES.map((code) => (
             <button
               key={code}

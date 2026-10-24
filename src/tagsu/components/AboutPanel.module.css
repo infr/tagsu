@@ -64,3 +64,16 @@
 .panel p:last-child {
   margin-bottom: 0;
 }
+
+@media (max-width: 560px) {
+  .panel {
+    position: fixed;
+    top: 56px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: none;
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+  }
+}

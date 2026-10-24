@@ -207,3 +207,27 @@
     white-space: normal;
   }
 }
+
+/* Phones: rows grow with their wrapped controls. */
+@container (max-width: 480px) {
+  .row {
+    padding: 10px 8px;
+    gap: 8px 10px;
+  }
+  .details {
+    grid-template-rows: auto;
+    row-gap: 10px;
+  }
+  .popover {
+    position: fixed;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 60dvh;
+    overflow-y: auto;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    border-width: 1px 0 0;
+    border-radius: var(--r-panel) var(--r-panel) 0 0;
+  }
+}

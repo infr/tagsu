@@ -44,10 +44,26 @@
 
 @media (max-width: 560px) {
   .pop {
-    grid-template-columns: repeat(10, 24px);
     position: fixed;
-    top: 56px;
-    left: 16px;
-    right: 16px;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: none;
+    max-height: 45dvh;
+    overflow-y: auto;
+    grid-template-columns: repeat(auto-fill, minmax(34px, 1fr));
+    gap: 4px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    border-width: 1px 0 0;
+    border-radius: var(--r-panel) var(--r-panel) 0 0;
+  }
+  .cell {
+    width: auto;
+    height: 40px;
+  }
+  .cell canvas {
+    width: 15px;
+    height: 24px;
   }
 }

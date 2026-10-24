@@ -144,7 +144,7 @@ export function Editor() {
           <button type="button" className="btn" onClick={sender.stop}>Stop</button>
         ) : (
           <button type="button" className="btn primary" onClick={send} title="Headphone jack, volume at max">
-            <Icon name="speaker" /> Send to Tagsu <kbd>⌘↵</kbd>
+            <Icon name="speaker" /> Send<span className={styles.long}> to Tagsu</span> <kbd>⌘↵</kbd>
           </button>
         )}
         {sending && status.phase === "sending" && (
