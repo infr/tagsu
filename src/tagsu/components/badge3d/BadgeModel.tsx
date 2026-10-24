@@ -328,12 +328,15 @@ export function BadgeModel({ picture, exploded, onLcdClick }: Props) {
               <meshStandardMaterial color="#e0bb5e" metalness={1} roughness={0.3} />
             </mesh>
           ))}
-          {/* Acrylic light guide under the glass, lit from the backlight LED at its end */}
           <mesh position={[0, 0, 0.29]} castShadow>
             <boxGeometry args={[6.9, 2.0, 0.26]} />
+            <meshStandardMaterial color="#121418" roughness={0.4} />
+          </mesh>
+          {/* Acrylic board behind the module's PCB, filling the gap to the main board, lit by the backlight LED */}
+          <mesh position={[0, 0, (Z.pcbTop - Z.modulePcb) / 2]} castShadow>
+            <boxGeometry args={[6.9, 2.0, Z.modulePcb - Z.pcbTop - 0.01]} />
             <meshPhysicalMaterial color="#e9eefc" emissive={lit ? "#8ea6ff" : "#1a2240"} emissiveIntensity={lit ? 0.55 : 0.2} roughness={0.25} clearcoat={0.6} />
           </mesh>
-          {/* The metal frame is a rim over the glass, leaving the light guide's edges visible */}
           <mesh geometry={geo.bezel} position={[0, 0, 0.34]} castShadow>
             <meshStandardMaterial {...metalProps} />
           </mesh>
