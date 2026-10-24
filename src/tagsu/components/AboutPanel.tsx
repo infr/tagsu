@@ -5,6 +5,7 @@ import styles from "./AboutPanel.module.css";
 import { Icon } from "./icons";
 
 const LINKS = [
+  { href: "https://kimsalmi.com/posts/2026/tagsu/", label: "Giving AI eyes to reverse engineer hardware", note: "how this editor was made" },
   { href: "https://rakettitiede.com/", label: "Rakettitiede", note: "made the badge" },
   { href: "https://firebay.pelaaja.info/embedded/12kbps-simple-audio-data-transfer-for-avr/", label: "12kbps data transfer for AVR using audio", note: "the audio modem, by Jari Tulilahti" },
   { href: "https://github.com/Jartza/tagsu-avr-modem", label: "tagsu-avr-modem", note: "the badge's audio modem" },

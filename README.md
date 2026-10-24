@@ -2,7 +2,7 @@
 
 Unofficial screen and logo editor for the Tagsu LCD name badge ([Rakettitiede](https://rakettitiede.com/), 2015), made because the original editor at tagsu.io is offline. Not affiliated with Rakettitiede.
 
-Live at https://tagsu.vercel.app/.
+Live at https://tagsu.vercel.app/. How it was made: [Giving AI eyes to reverse engineer hardware](https://kimsalmi.com/posts/2026/tagsu/).
 
 Updates go to the badge as audio through the headphone jack: select the headphone jack as the sound output, turn the volume to max and press Send. An update takes about 5 seconds.
 
