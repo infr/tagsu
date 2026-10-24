@@ -1,0 +1,51 @@
+.panel {
+  gap: 12px;
+}
+
+.editor {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.pixels {
+  width: 168px;
+  max-width: 100%;
+  aspect-ratio: 15 / 16;
+  border-radius: 4px;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.tools {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  flex: 1;
+  min-width: 180px;
+  align-content: start;
+}
+
+.tools select,
+.tools .glyph {
+  grid-column: 1 / -1;
+}
+
+.tools select {
+  height: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-ctl);
+  background: var(--surface);
+  font-size: 12px;
+}
+
+.glyph {
+  height: 26px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-ctl);
+  background: var(--surface);
+  font-size: 12px;
+  min-width: 0;
+}

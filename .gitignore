@@ -1,0 +1,10 @@
+/node_modules
+/.next/
+/out/
+.DS_Store
+.env*
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+# Written by `next dev` for coding agents
+AGENTS.md

@@ -1,0 +1,224 @@
+/* Everything the editor needs, scoped under .tagsu so it can live inside another site. */
+.tagsu {
+  --bg: #f4f5f8;
+  --surface: #ffffff;
+  --surface-2: #f0f1f4;
+  --fg: #1b1c21;
+  --fg-2: #5d606b;
+  --fg-3: #8b8e99;
+  --line: #e3e4e9;
+  --accent: #3b4fe0;
+  --accent-fg: #ffffff;
+  --accent-soft: #e8ebfd;
+  --danger: #c4372f;
+  --warn: #a8650b;
+  --shadow: 0 8px 24px rgba(20, 22, 40, 0.12), 0 1px 3px rgba(20, 22, 40, 0.08);
+  --r-ctl: 6px;
+  --r-panel: 10px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tagsu {
+    --bg: #101115;
+    --surface: #17181d;
+    --surface-2: #1e2027;
+    --fg: #e8e9ee;
+    --fg-2: #a3a6b1;
+    --fg-3: #6f7380;
+    --line: #2a2c35;
+    --accent: #7486ff;
+    --accent-fg: #0d0f1a;
+    --accent-soft: #23284a;
+    --danger: #ff7b72;
+    --warn: #e6a64a;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+    color-scheme: dark;
+  }
+}
+
+.tagsu {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.45 var(--font-sans, "Inter"), -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.tagsu *,
+.tagsu *::before,
+.tagsu *::after {
+  box-sizing: border-box;
+}
+
+.tagsu button,
+.tagsu input,
+.tagsu select {
+  font: inherit;
+  color: inherit;
+}
+
+.tagsu :focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tagsu * {
+    transition: none !important;
+  }
+}
+
+.tagsu kbd {
+  font: 11px var(--font-mono, ui-monospace), monospace;
+  padding: 1px 4px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  color: var(--fg-3);
+  background: var(--surface-2);
+}
+
+.tagsu .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-ctl);
+  background: var(--surface);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.tagsu .btn:hover {
+  background: var(--surface-2);
+}
+
+.tagsu .btn.small {
+  height: 26px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.tagsu .btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+  font-weight: 500;
+}
+
+.tagsu .btn.primary:hover {
+  filter: brightness(1.06);
+}
+
+.tagsu .btn.primary kbd {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.tagsu .btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.tagsu .icon-btn {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: var(--r-ctl);
+  background: transparent;
+  color: var(--fg-2);
+  cursor: pointer;
+}
+
+.tagsu .icon-btn:hover {
+  background: var(--surface-2);
+  color: var(--fg);
+}
+
+.tagsu .icon-btn.danger:hover {
+  color: var(--danger);
+}
+
+.tagsu .icon-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+  background: transparent;
+}
+
+.tagsu .icon-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.tagsu .chip {
+  height: 26px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-ctl);
+  background: var(--surface);
+  color: var(--fg-3);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.tagsu .chip[aria-pressed="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.tagsu .seg {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: var(--r-ctl);
+  overflow: hidden;
+  flex: none;
+}
+
+.tagsu .seg button {
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--fg-3);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.tagsu .seg button + button {
+  border-left: 1px solid var(--line);
+}
+
+.tagsu .seg button[aria-pressed="true"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.tagsu .seg svg {
+  width: 14px;
+  height: 14px;
+}
+
+.tagsu .panel {
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-panel);
+}
+
+.tagsu .chip:disabled,
+.tagsu .seg button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}

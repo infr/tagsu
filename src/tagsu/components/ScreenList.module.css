@@ -1,0 +1,209 @@
+.wrap {
+  container-type: inline-size;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-panel);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 22px minmax(200px, 230px) minmax(0, 1fr) 116px;
+  grid-template-areas: "idx lcd details actions";
+  gap: 8px 14px;
+  align-items: center;
+  padding: 10px 12px;
+  border-top: 1px solid var(--line);
+}
+
+.row:first-child {
+  border-top: 0;
+  border-radius: var(--r-panel) var(--r-panel) 0 0;
+}
+
+.row:last-child {
+  border-radius: 0 0 var(--r-panel) var(--r-panel);
+}
+
+.active {
+  background: var(--accent-soft);
+}
+
+.idx {
+  grid-area: idx;
+  color: var(--fg-3);
+  font-size: 12px;
+  text-align: right;
+}
+
+.active .idx {
+  color: var(--accent);
+}
+
+.module {
+  grid-area: lcd;
+  padding: 5px;
+  border-radius: 6px;
+  background: #15171c;
+  min-width: 0;
+}
+
+.details {
+  grid-area: details;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  grid-template-rows: repeat(3, 26px);
+  gap: 6px 10px;
+  align-items: center;
+  min-width: 0;
+}
+
+.label {
+  color: var(--fg-3);
+  font-size: 12px;
+}
+
+.summary {
+  color: var(--fg-2);
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.controls select,
+.delay {
+  height: 26px;
+  padding: 0 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-ctl);
+  background: var(--surface);
+  font-size: 12px;
+  min-width: 0;
+  max-width: 152px;
+}
+
+.controls select:disabled {
+  color: var(--fg-3);
+}
+
+.field {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--fg-2);
+  font-size: 12px;
+}
+
+.delay {
+  width: 50px;
+  padding: 0 6px;
+}
+
+.note {
+  color: var(--fg-3);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.warn {
+  color: var(--danger);
+  font-size: 12px;
+}
+
+/* Popovers open under the row of controls. */
+.anchor {
+  position: relative;
+}
+
+.popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 15;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-panel);
+  box-shadow: var(--shadow);
+  white-space: normal;
+}
+
+.actions {
+  grid-area: actions;
+  display: flex;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.add {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 8px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px dashed var(--line);
+  border-radius: var(--r-panel);
+  background: transparent;
+  color: var(--fg-2);
+  cursor: pointer;
+}
+
+.add:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.add:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.add svg {
+  width: 16px;
+  height: 16px;
+}
+
+.add kbd {
+  margin-left: auto;
+}
+
+/* Narrow lists: the options go under the LCD, still at a fixed height. */
+@container (max-width: 900px) {
+  .row {
+    grid-template-columns: 22px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "idx lcd actions"
+      ". details details";
+  }
+  .module {
+    max-width: 320px;
+  }
+  .actions {
+    flex-direction: column;
+    align-self: start;
+  }
+  .details {
+    grid-template-rows: 26px 58px 26px;
+  }
+  .controls {
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+}

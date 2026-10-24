@@ -1,0 +1,42 @@
+.badge {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  user-select: none;
+}
+
+.body {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.glass {
+  position: absolute;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.silk {
+  font: 600 15px var(--font-sans), sans-serif;
+  fill: #e9eef8;
+}
+
+.brand {
+  font: 500 30px var(--font-sans), sans-serif;
+  fill: #e9eef8;
+  letter-spacing: 0.02em;
+}
+
+.cell {
+  font: 700 26px var(--font-sans), sans-serif;
+  fill: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.04em;
+}
+
+.inductor {
+  font: 500 22px var(--font-mono), monospace;
+  fill: #c9ccd1;
+}

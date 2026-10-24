@@ -1,0 +1,45 @@
+/*
+ * Light colours whatever the viewer's theme, on a transparent background, so the page around shows through.
+ * The frame is meant to overhang the content above and below it by --overhang, so the canvas fills it all and
+ * the badge can turn and cast its shadow past the visible area. The doubled class wins over .tagsu's dark media query.
+ */
+.embed.embed {
+  --overhang: 72px;
+  --surface: #ffffff;
+  --line: #e3e4e9;
+  --fg: #1b1c21;
+  --fg-3: #8b8e99;
+  --accent: #3b4fe0;
+  --accent-soft: #e8ebfd;
+  color-scheme: light;
+  position: fixed;
+  inset: 0;
+  background: transparent;
+}
+
+.controls {
+  position: absolute;
+  right: 12px;
+  bottom: calc(var(--overhang) + 12px);
+  display: flex;
+  gap: 8px;
+}
+
+.open {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: var(--r-ctl);
+  background: #2440ec;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.open:hover,
+.open:focus-visible {
+  background: #1a35d0;
+}

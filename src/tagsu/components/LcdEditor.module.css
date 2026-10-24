@@ -1,0 +1,45 @@
+.lcd {
+  position: relative;
+  cursor: text;
+}
+
+.lcd canvas {
+  display: block;
+  width: 100%;
+}
+
+.lcd:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.inputs {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.inputs input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: transparent;
+  cursor: text;
+  font-size: 16px;
+}
+
+.inputs input:focus {
+  outline: none;
+}
+
+.inputs input::selection {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.inputs .tall {
+  grid-row: 1 / 3;
+}
